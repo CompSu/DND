@@ -1,35 +1,11 @@
-@font-face { 
-    font-family: 'Mellion';
-    src: url('Mellion.eot');
-    src: local('Mellion'),
-        url('Mellion.eot?#iefix') format('embedded-opentype'),
-        url('Mellion.woff2') format('woff2'),
-        url('Mellion.woff') format('woff'),
-        url('Mellion.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
 @font-face {
     font-family: 'Prestigio';
     src: url('Prestigio.eot');
     src: local('Prestigio'),
-        url('Prestigio.eot?#iefix') format('embedded-opentype'),
-        url('Prestigio.woff2') format('woff2'),
-        url('Prestigio.woff') format('woff'),
-        url('Prestigio.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'House Of The Dragon COLOR';
-    src: url('HouseOfTheDragonCOLOR.eot');
-    src: url('HouseOfTheDragonCOLOR.eot?#iefix') format('embedded-opentype'),
-        url('HouseOfTheDragonCOLOR.woff2') format('woff2'),
-        url('HouseOfTheDragonCOLOR.woff') format('woff');
+        url('Шрифты/Prestigio/Prestigio.eot?#iefix') format('embedded-opentype'),
+        url('Шрифты/Prestigio/Prestigio.woff2') format('woff2'),
+        url('Шрифты/Prestigio/Prestigio.woff') format('woff'),
+        url('Шрифты/Prestigio/Prestigio.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -37,10 +13,10 @@
 
 @font-face {
     font-family: 'House of the Dragon';
-    src: url('HouseoftheDragon-Black.eot');
-    src: url('HouseoftheDragon-Black.eot?#iefix') format('embedded-opentype'),
-        url('HouseoftheDragon-Black.woff2') format('woff2'),
-        url('HouseoftheDragon-Black.woff') format('woff');
+    src: url('Шрифты/BlackLetter/HouseoftheDragon-Black.eot');
+    src: url('Шрифты/BlackLetter/HouseoftheDragon-Black.eot?#iefix') format('embedded-opentype'),
+        url('Шрифты/BlackLetter/HouseoftheDragon-Black.woff2') format('woff2'),
+        url('Шрифты/BlackLetter/HouseoftheDragon-Black.woff') format('woff');
     font-weight: 900;
     font-style: normal;
     font-display: swap;
