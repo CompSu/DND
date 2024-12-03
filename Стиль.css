@@ -1,0 +1,550 @@
+@font-face { 
+    font-family: 'Mellion';
+    src: url('Mellion.eot');
+    src: local('Mellion'),
+        url('Mellion.eot?#iefix') format('embedded-opentype'),
+        url('Mellion.woff2') format('woff2'),
+        url('Mellion.woff') format('woff'),
+        url('Mellion.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Prestigio';
+    src: url('Prestigio.eot');
+    src: local('Prestigio'),
+        url('Prestigio.eot?#iefix') format('embedded-opentype'),
+        url('Prestigio.woff2') format('woff2'),
+        url('Prestigio.woff') format('woff'),
+        url('Prestigio.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'House Of The Dragon COLOR';
+    src: url('HouseOfTheDragonCOLOR.eot');
+    src: url('HouseOfTheDragonCOLOR.eot?#iefix') format('embedded-opentype'),
+        url('HouseOfTheDragonCOLOR.woff2') format('woff2'),
+        url('HouseOfTheDragonCOLOR.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'House of the Dragon';
+    src: url('HouseoftheDragon-Black.eot');
+    src: url('HouseoftheDragon-Black.eot?#iefix') format('embedded-opentype'),
+        url('HouseoftheDragon-Black.woff2') format('woff2'),
+        url('HouseoftheDragon-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Стили для заголовков */
+h1 {
+    letter-spacing: 5px;
+    font-size: 6.6vw;
+    font-family: 'House of the Dragon';
+    margin: 2vw;
+    color: #D2C3AF;
+}
+
+h2 {
+    letter-spacing: 4px;
+    font-size: 45px;
+    font-family: 'House of the Dragon';
+    color: #D2C3AF;
+}
+
+h3 {
+    letter-spacing: 3px;
+    font-size: 30px;
+    font-family: 'House of the Dragon';
+    color: #D2C3AF;
+}
+
+p {
+    letter-spacing: 2px;
+    font-size: 25px;
+    font-family: 'Prestigio';
+    color: #D2C3AF;
+}
+
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Стили для body */
+body {
+    font-family: 'Prestigio', sans-serif;
+    background-color: #D2C3AF;
+    background-image: url('Изображения/Фон.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Стили для header */
+header {
+    background: #645C50;
+    padding: 20px 0;
+    text-align: center;
+    border-radius: 0px 0px 7vw 7vw;
+    width: 100%;
+}
+
+.header-content {
+    max-width: 1200px; /* Ограничиваем ширину контента */
+    margin: 0 auto; /* Центрируем контент */
+}
+
+header h1 {
+    font-family: 'House of the Dragon', sans-serif;
+    font-size: 7em; /* Адаптивный размер заголовка */
+    color: #D2C3AF;
+    margin-bottom: 20px;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #D2C3AF;
+    font-size: 2em; /* Адаптивный размер ссылок */
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #fff;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 720px) {
+    header h1 {
+        font-size: 10vw;
+    }
+
+    header nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    header nav ul li a {
+        font-size: 4vw;
+    }
+}
+
+.home-block {
+    font-family: 'Prestigio', sans-serif;
+    font-size: 25px;
+    color: #D2C3AF;
+    background: rgba(100, 92, 80, 0.62);
+    border-radius: 20px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.java-block {
+    background-color: #645C50;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.java-block img {
+    max-width: 100%;
+    height: auto;
+}
+
+.java-block p {
+    text-align: center;
+}
+
+.monster-block {
+    background-color: #645C50;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.monster-description {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.monster-block img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Адаптивные стили для блока monster */
+@media (max-width: 768px) {
+    .monster-block {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .monster-block img {
+        max-width: 100%;
+    }
+
+    .monster-description {
+        text-align: center;
+    }
+}
+
+/* Стили для карточек */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    background-color: #645C50;
+    border-radius: 20px;
+    width: 48%;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.card h3 {
+    margin-top: 10px;
+}
+.card:hover {
+    transform: scale(1.1);
+}
+
+/* Адаптивные стили для карточек */
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+}
+
+.game-area {
+    background: #645C50;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    max-width: 600px;
+    margin: 10px auto;
+    min-height: 300px; /* Минимальная высота для игрового блока */
+    position: relative; /* Остается на месте в пределах родительского элемента */
+}
+
+#game-area {
+    width: 100%; /* Полная ширина блока */
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%; /* Для предотвращения расширения блока */
+}
+
+#result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%; /* Аналогично для этого блока */
+}
+
+#timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 20px; /* Увеличение отступа сверху */ 
+    position: relative; /* Убери абсолютное позиционирование */
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Стили для footer */
+.footer {
+    background: #645C50;
+    padding: 30px 0;
+    border-radius: 7vw 7vw 0 0;
+    font-family: 'Prestigio';
+    text-align: center;
+}
+
+.footer .row {
+    width: 100%;
+    margin: 1% 0;
+    padding: 0.6% 0;
+    color: #D2C3AF;
+    font-size: 2em;
+}
+
+.footer .row a {
+    text-decoration: none;
+    color: #D2C3AF;
+    transition: 0.5s;
+}
+
+.footer .row a:hover {
+    color: #fff;
+}
+
+.footer .row ul {
+    width: 100%;
+}
+
+.footer .row ul li {
+    display: inline-block;
+    margin: 0 30px;
+}
+
+.footer .row a i {
+    font-size: 2em;
+    margin: 0 1%;
+}
+
+.social-links a {
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.social-links img {
+  width: 75px;
+  height: 75px;
+  transition: transform 0.3s ease;
+}
+
+.social-links img:hover {
+  transform: scale(1.1);
+}
+
+/* Адаптивные стили для footer */
+@media (max-width: 720px) {
+    .footer {
+        text-align: left;
+        padding: 5%;
+    }
+
+    .footer .row ul li {
+        display: block;
+        margin: 10px 0;
+        text-align: left;
+    }
+
+    .footer .row a i {
+        margin: 0 3%;
+    }
+}
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .gallery img {
+            width: 300px; /* Три изображения в строке */
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Медиа-запрос для планшетов */
+        @media (max-width: 768px) {
+            .gallery img {
+                width: calc(50% - 20px); /* Два изображения в строке */
+            }
+        }
+
+        /* Медиа-запрос для телефонов */
+        @media (max-width: 480px) {
+            .gallery img {
+                width: calc(100% - 20px); /* Одно изображение в строке */
+                height: auto;
+            }
+        }
+
+form#filterForm {
+    display: flex;
+    flex-direction: row;
+    max-width: 800px;
+    gap: 10px;
+}
+
+/* Метки для полей формы */
+label {
+    font-size: 40px;
+    margin-bottom: 5px;
+    color: #D2C3AF;
+}
+
+/* Стили для выпадающих списков */
+select {
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Стили для кнопки */
+button {
+    font-family: 'Prestigio', sans-serif;
+    font-size: 25px;
+    padding: 10px;
+    background: #645C50;
+    color: #D2C3AF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Стили для кнопки при наведении */
+button:hover {
+    background-color: #373229;
+}
+
+/* Дополнительные стили для кнопки при нажатии */
+button:active {
+    background-color: #373229;
+}
+
+/* Стили для фокуса на select и button */
+select:focus, button:focus {
+    outline: 2px solid #373229;
+}
+
+
+    .container {
+      width: 400px;
+      height: 480px;
+      position: relative;
+      margin: 6% auto;
+      background: rgba(100, 92, 80, 0.62);
+      padding: 5px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .tabs {
+      width: 220px;
+      margin: 35px auto;
+      position: relative;
+      border-radius: 30px;
+    }
+
+    .form {
+      top: 180px;
+      position: absolute;
+      width: 280px;
+      transition: .5s;
+    }
+
+    .input-filed {
+      font-family: 'Prestigio', sans-serif;
+      font-weight: bold;
+      font-size: 25px;
+      width: 100%;
+      padding: 10px 0;
+      margin: 5px 0;
+      border-left: 0;
+      border-top: 0;
+      border-right: 0;
+      color: #645C50;
+      text-align: center;
+      border-bottom: 1px solid #D2C3AF;
+      outline: none;
+      background: white;
+      border-radius: 30px;
+    }
+
+    .submit-btn {
+      width: 85%;
+      padding: 10px 30px;
+      cursor: pointer;
+      display: block;
+      margin: auto;
+      background: #645C50;
+      border: 0;
+      outline: none;
+      border-radius: 30px;
+    }
+
+    .check-box {
+      margin: 30px 10px 30px 0;
+    }
+
+    span {
+      color: #D2C3AF;
+      font-size: 20px;
+      bottom: 68px;
+      position: absolute;
+    }
+
+    #login {
+      left: 50px;
+    }
+
+    #register {
+      left: 450px;
+    }
