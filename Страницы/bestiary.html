@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeons & Dragons</title>
+    <link rel="icon" href="Изображения/7b9ae0b4b45c032ac8964d9b61387fb8.png">
+    <link rel="stylesheet" href="Стиль.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Dungeons & Dragons</h1>
+            <nav>
+                <ul>
+                    <li><a href="../DND.html">Home</a></li>
+                    <li><a href="races.html">Races</a></li>
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="bestiary.html">Bestiary</a></li>
+                    <li><a href="regist.html">Registration</a></li>
+                    <li><a href="JavaEx.html">JavaLab</a></li>
+                    <li><a href="MiniGames.html">Games</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+            <div class="home-block"><h2>Monster Listing</h2>
+    <section>
+        <form id="filterForm">
+            <label for="size">Size:</label>
+            <select id="size" name="size">
+                <option value="all">All</option>
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+            </select>
+
+            <label for="type">Type:</label>
+            <select id="type" name="type">
+                <option value="all">All</option>
+                <option value="beast">Beast</option>
+                <option value="undead">Undead</option>
+                <option value="monster">Monster</option>
+            </select>
+
+            <button type="button" onclick="filterMonsters()">Apply Filter</button>
+        </form>
+    </section>
+
+    <section id="monsterList">
+
+        <div class="monster-block" data-size="medium" data-type="undead">
+            <div class="monster-description">
+                <h3>Skeleton</h3>
+                <p>AC 13 (remnants of armor)
+HP 13 (2d8 + 4)
+Speed ​​6</p>
+                <hr>
+                <p>Vulnerability crushing
+Condition Immunity: Poisoned
+Sensesdarkvision 12 cells
+Passive perception 9
+Language understands all languages ​​spoken during life but cannot speak
+Difficulty 1/4 (50 XP)</p>
+                <hr>
+                <p>Short Sword Melee Weapon: +4 attack, reach: 1 square, one target. Hit: 5 (1d6 + 2) piercing damage.
+Short BowRanged Weapon: +4 attack, reach 16/64 squares, one target. Hit: 5 (1d6 + 2) piercing damage.</p>
+            </div>
+            <img src="Изображения/скелет-removebg-preview.png" alt="skeleton">
+        </div>
+
+
+
+
+        <div class="monster-block" data-size="small" data-type="beast">
+            <div class="monster-description">
+                <h3>Badger</h3>
+                <p>AC 10
+HP 3 (1d4 + 1)
+Speed 4</p>
+                <hr>
+                <p>Sensitive dark vision of 6 cells
+Passive perception 11
+Difficulty 0 (0 - 10 XP)</p>
+                <hr>
+                <p>The Badger has an advantage on the Wisdom Check (Mindfulness) which rely on the sense of smell.
+A sensitive Sniffer Dog has the advantage of Wisdom Tests (Mindfulness) which rely on the sense of smell.</p>
+            </div>
+            <img src="Изображения/барсук-removebg-preview.png" alt="badger">
+        </div>
+
+
+
+
+<div class="monster-block" data-size="medium" data-type="undead">
+            <div class="monster-description">
+                <h3>Zombie</h3>
+                <p>AC 8
+HP 22 (3d8 + 9)
+Speed ​​4</p>
+                <hr>
+                <p>Condition Immunity: Poisoned
+SensesDarkvision for 12 cells
+Passive perception 8
+Language understands all the languages ​​he spoke during life, cannot speak
+Difficulty 1/4 (50 XP)</p>
+                <hr>
+                <p>Deadly durability. 
+If the damage dealt reduces the zombie to 0 hit points, the zombie must make a Constitution saving throw DC 5 + the damage dealt. On a success, the hit drops to only 1. Does not apply to radiant damage or critical hits. 
+Strike: Melee Weapon: +3 attack, reach 1 square, 1 target. Hit: 4 (1d6 + 1) bludgeoning damage.</p>
+            </div>
+            <img src="Изображения/зомбе-removebg-preview.png" alt="zombie">
+        </div>
+
+
+
+
+<div class="monster-block" data-size="medium" data-type="monster">
+            <div class="monster-description">
+                <h3>Mimic</h3>
+                <p>AC 12 (natural armor)
+HP 58 (9d8 + 18)
+Speed ​​3</p>
+                <hr>
+                <p>Ability:
+Stealth +5
+Immunityacid
+Condition Immunity: Knocked Down
+Senses: darkvision 12 cells
+Passive perception 11
+Difficulty2 (450 XP)</p>
+                <hr>
+                <p>Shapeshifter: The mimic can use a standard action to change into an object or back into its amorphous form. Its statistics do not change in either form. Any objects it is carrying or holding are unaffected. Upon death, it returns to its true form.
+Sticky (Object Form Only): The mimic sticks to anything it touches. A larger or smaller creature is also grappled while the mimic is stuck to it (DIF 13). Skill checks to break free of the mimic have disadvantage.
+False Appearance (Object Form Only): While the mimic remains motionless, it is indistinguishable from a normal object.
+GraspedThe mimic has advantage on attack rolls against any creature it has grappled.</p>
+            </div>
+            <img src="Изображения/мимик-removebg-preview.png" alt="mimic">
+        </div>
+
+
+
+<div class="monster-block" data-size="medium" data-type="monster">
+            <div class="monster-description">
+                <h3>Harpy</h3>
+                <p>AC 11
+HP 38 (7d8 + 7)
+Speed ​​4, Fly 8</p>
+                <hr>
+                <p>Passive Perception 10
+Language: Common
+Difficulty 1 (200 XP)</p>
+                <hr>
+                <p>Multiattack: The harpy makes two attacks: one with its claws, one with its club.
+Claws Melee Weapon: +3 to attack, reach: 1 square, one target. Hit: 6 (2d4 + 1) slashing damage.
+Club Melee Weapon: +3 to attack, reach: 1 square, one target. Hit: 3 (1d4 + 1) bludgeoning damage.
+Enticing Song:
+The harpy sings a magical melody. Each humanoid within 60 squares of the harpy that can hear the melody must succeed on a DC 11 Wisdom saving throw or be charmed until the song ends. The harpy must use a bonus action on each of its turns to continue singing, and can end at any time. If the harpy becomes incapacitated, the song ends
+
+The charmed target is incapacitated and ignores the songs of other harpies. If the charmed target is not adjacent to the harpy, it must use a Roll on its turn to move toward the harpy by the shortest route. This move does not provoke an opportunity attack, but if the target's move would require it to enter a dangerous area, such as lava or a pit, the target can repeat the saving throw. The target also repeats the saving throw at the end of each of its turns. If the save is successful, the effect ends.</p>
+            </div>
+            <img src="Изображения/гарпия-removebg-preview.png" alt="harpy">
+        </div>
+
+
+
+<div class="monster-block" data-size="medium" data-type="monster">
+            <div class="monster-description">
+                <h3>Death Dog</h3>
+                <p>AC 12
+HP 39 (6d8 + 12)
+Speed ​​8</p>
+                <hr>
+                <p>Ability: Perception +5, Stealth +4
+Senses: Darkvision 24 squares
+Passive Perception 15
+Difficulty 1 (200 XP)
+The dog has advantage on Wisdom (Perception) checks and on saving throws against being blinded, charmed, deafened, frightened, stunned, or knocked unconscious.
+Two-Headed: The dog has advantage on Wisdom (Perception) checks and on saving throws against being blinded, charmed, deafened, frightened, stunned, or knocked unconscious.</p>
+                <hr>
+                <p>Multiattack: The dog makes two Bite attacks.
+Bite: Melee Weapon: +4 to hit, reach: 1 square, one target. Hit: 5 (1d6 + 2) piercing damage. If the target is a creature, it must make a DC 12 Constitution saving throw against disease or become poisoned until the disease is cured. Every 24 hours, the creature must repeat the saving throw, reducing its hit point maximum by 5 (1d10) on a failed save. The reduced value remains until the disease is cured. The creature dies if the disease reduces its hit point maximum to 0.</p>
+            </div>
+            <img src="Изображения/хороший_песик-removebg-preview.png" alt="deathdog">
+        </div>
+
+
+
+<div class="monster-block" data-size="large" data-type="monster">
+            <div class="monster-description">
+                <h3>Young Remorhaz</h3>
+                <p>AC 14 (natural armor)
+HP 93 (11d10 + 33)
+Speed ​​6, burrow 4</p>
+                <hr>
+                <p>Immunity: Cold, Fire
+Senses: Darkvision 12 cells, Vibration Sense 12 cells
+Passive Perception 10
+Difficulty 5 (1,800 XP)</p>
+                <hr>
+                <p>A creature that touches the remorhaz or hits it with a melee attack while adjacent to it takes 7 (2d6) fire damage.
+Fiery Body: A creature that touches the remorhaz or hits it with a melee attack while adjacent to it takes 7 (2d6) fire damage.
+Bite Melee Weapon: +6 to attack, reach: 1 square, one target. Hit: 20 (3d10 + 4) piercing damage plus 7 (2d6) fire damage.</p>
+            </div>
+            <img src="Изображения/хз_че_это_3-removebg-preview.png" alt="remorhaz">
+        </div>
+
+
+
+<div class="monster-block" data-size="large" data-type="monster">
+            <div class="monster-description">
+                <h3>Kraken</h3>
+                <p>AC 18 (natural armor)
+HP 472 (27d20 + 189)
+Speed ​​4, swim 12</p>
+                <hr>
+                <p>Immunities: Lightning; bludgeoning, piercing, and slashing from nonmagical weapons
+Condition Immunities: Frightened, Paralyzed
+Senses: Truesight 24 squares
+Passive Perception 14
+Language: Understands Abyssal, Celestial, Infernal, and Primordial but cannot speak, telepathy 24 squares
+Difficulty 23 (50,000 XP)
+Amphibious: The Kraken can breathe air and water.
+Freedom of Movement: The Kraken ignores difficult terrain, all magical effects that reduce its speed, or restrain it. It can spend 1 square of its movement to escape a nonmagical restraint or grapple.
+Siege Monster: The Kraken deals double damage to objects and infrastructure.</p>
+                <hr>
+                <p>Multiattack: The kraken makes 3 tentacle attacks, any of which it can replace with a Hurl.
+Bite: Melee Weapon: +18 to hit, reach: 1 square, one target. Hit: 23 (3d8 + 10) piercing damage. If the target is Large or smaller and is grappled by the kraken, it is swallowed, ending the grapple. The swallowed target is blinded and restrained, has total cover from attacks and other effects outside the kraken, and takes 42 (12d6) poison damage at the start of each of the kraken's turns. If the kraken takes 50 damage or more in a single turn from a creature inside it, the kraken must succeed on a DC 25 Constitution saving throw at the end of that turn or regurgitate the creature, which falls prone in a space within 2 squares of the kraken. If the kraken swallows a creature, it can no longer escape the body using 3 squares of its movement, immediately standing up.
+Tentacle: Melee Weapon: +18 attack bonus, reach 6 squares, one target. Hit: 20 (3d6 + 10) bludgeoning damage, and the target is grappled (escape difficulty 18). While the grapple lasts, the target is restrained. The kraken has 10 tentacles, each of which can grapple 1 target.
+Throw: The kraken can hurl a grappled Large or smaller object or creature up to 12 squares in a random direction, knocking the creature prone. If the thrown target hits a hard surface, it takes 3 (1d6) bludgeoning damage for every 2 squares it travels. If the target is thrown at another creature, the other creature must succeed on a DC 18 Dexterity saving throw. On a failed save, the creature takes the same damage and is knocked prone.
+Thunderstorm: The kraken magically creates 3 lightning bolts, each of which can strike a target the kraken can see within 24 squares of it. The target must make a DC 23 Dexterity saving throw. On a failed save, the creature takes 22 (4d10) lightning damage, or half as much damage on a successful save.
+Legendary Actions:
+Tentacle Attack or Hurl: The kraken makes a Tentacle attack, or hurls its grappled target.
+Thunderstorm (Requires 2 Actions)The kraken uses Thunderstorm.
+Ink Cloud (Requires 3 Actions): While underwater, the kraken creates a 12-square radius cloud of ink. The cloud curves around corners, and the area within the cloud is heavily obscured to anyone but the kraken. Each creature other than the kraken that ends its turn in the cloud must succeed on a DC 23 Constitution saving throw. On a failed save, the creature takes 16 (3d10) poison damage, or half as much damage on a successful one. A strong current disperses the cloud, or it persists until the end of the kraken's next turn.</p>
+            </div>
+            <img src="Изображения/кракен-removebg-preview.png" alt="kraken">
+        </div>
+
+
+
+<div class="monster-block" data-size="small" data-type="monster">
+            <div class="monster-description">
+                <h3>Cockatrice</h3>
+                <p>AC 11
+HP 27 (6d6 + 6)
+Speed ​​4, in flight - 8</p>
+                <hr>
+                <p>Senses: Darkvision 12 cells
+Passive Perception 11
+Difficulty 1/2 (100 XP)</p>
+                <hr>
+                <p>Bite: Melee Weapon: +3 to attack, reach: one square, one target. Hit: 3 (1d4 + 1) piercing damage. The target makes a DC 11 Constitution saving throw or begins turning to stone. On a failed save, it cannot move (is restrained) and must make another saving throw at the end of its next turn. On a second failure, it turns to stone for the next 24 hours.</p>
+            </div>
+            <img src="Изображения/COCKATRICE-removebg-preview.png" alt="cockatrice">
+        </div>
+
+
+
+<div class="monster-block" data-size="small" data-type="monster">
+            <div class="monster-description">
+                <h3>Chitine</h3>
+                <p>AC 14 (hide armor)
+HP 18 (4d6 + 4)
+Speed ​​6, climb 6</p>
+                <hr>
+                <p>Ability: Athletics +4, Stealth +4
+Senses: Darkvision 60 ft.
+Passive Perception 10
+Language: Undercommon
+Difficulty 1/2 (100 XP)
+Fae Heritage: Chitin has advantage on saving throws against being charmed and cannot be magically put to sleep.
+Sunlight Sensitivity: While in sunlight, chitin has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight.
+Web Sense: While in contact with a web, chitin knows the precise location of any other creature in contact with that web.
+Web Walker: Chitin ignores any movement restrictions caused by webs.</p>
+                <hr>
+                <p>Multiattack: Chitin makes three attacks with its daggers.
+Dagger: Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d4 + 2) piercing damage.</p>
+            </div>
+            <img src="Изображения/хз_че_это-removebg-preview.png" alt="chitine">
+        </div>
+
+
+
+<div class="monster-block" data-size="small" data-type="beast">
+            <div class="monster-description">
+                <h3>Raven</h3>
+                <p>AC 12
+HP 1 (1d4-1)
+Speed ​​2, fly 10</p>
+                <hr>
+                <p>Ability: Perception +3
+Passive Perception 13
+Difficulty 0 (0 - 10 XP)</p>
+                <hr>
+                <p>Beak: Melee Weapon: +4 to attack, reach: 1 cell, one target. Hit: 1 piercing damage.</p>
+            </div>
+            <img src="Изображения/ворон-removebg-preview (1).png" alt="raven">
+        </div>
+
+
+
+<div class="monster-block" data-size="medium" data-type="beast">
+            <div class="monster-description">
+                <h3>Wolf</h3>
+                <p>AC 13 (natural armor)
+HP 11 (2d8 + 2)
+Speed ​​40 ft.</p>
+                <hr>
+                <p>Ability: Perception +3, Stealth +4
+Passive Perception 13
+Difficulty 1/4 (50 XP)</p>
+                <hr>
+                <p>Bite: Melee Attack: +4 to hit, range 5 ft., one target. Hit: 7 (2d4 + 2) piercing damage. If the target is a creature, it must make a DC 11 Strength saving throw or be prone.</p>
+            </div>
+            <img src="Изображения/вольк-removebg-preview.png" alt="wolf">
+        </div>
+
+
+
+<div class="monster-block" data-size="medium" data-type="beast">
+            <div class="monster-description">
+                <h3>Panther</h3>
+                <p>AC 12
+HP 13 (3d8)
+Speed ​​10, Climb 8</p>
+                <hr>
+                <p>Ability: Perception +4, Stealth +6
+Passive Perception 14
+Difficulty 1/4 (50 XP)</p>
+                <hr>
+                <p>Bite: Melee Weapon: +4 to attack, reach: 1 square, one target. Hit: 5 (1d6 + 2) piercing damage.
+Claws: Melee Weapon: +4 to attack, reach: 1 square, one target. Hit: 4 (1d4 + 2) slashing damage.</p>
+            </div>
+            <img src="Изображения/пантерь-removebg-preview.png" alt="panther">
+        </div>
+
+
+
+<div class="monster-block" data-size="large" data-type="beast">
+            <div class="monster-description">
+                <h3>Orca</h3>
+                <p>AC 12 (natural armor)
+HP 90 (12d12 + 12)
+Swimming Speed ​​12</p>
+                <hr>
+                <p>Ability: Perception +3
+Senses: blindsight 24 cells
+Passive perception 13
+Difficulty 3 (700 XP)</p>
+                <hr>
+                <p>Bite Melee Weapon: +6 to attack, reach: 1 square, one target. Hit: 21 (5d6 + 4) piercing damage.</p>
+            </div>
+            <img src="Изображения/орка-removebg-preview.png" alt="orca">
+        </div>
+
+
+
+<div class="monster-block" data-size="large" data-type="beast">
+            <div class="monster-description">
+                <h3>Elephant</h3>
+                <p>AC 12 (natural armor)
+HP 76 (8d12 + 24)
+Speed ​​8</p>
+                <hr>
+                <p>Passive Perception 10
+Difficulty 4 (1,100 XP)</p>
+                <hr>
+                <p>If the elephant moves at least 4 squares toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 12 Strength saving throw or be knocked prone. If the target is knocked prone, the elephant can make an additional Stomp attack against it as a bonus action.
+Trample Charge: If the elephant moves at least 4 squares toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 12 Strength saving throw or be knocked prone. If the target is knocked prone, the elephant can make an additional Stomp attack against it as a bonus action.</p>
+            </div>
+            <img src="Изображения/слон-removebg-preview.png" alt="Elephant">
+        </div>
+
+
+
+<div class="monster-block" data-size="small" data-type="undead">
+            <div class="monster-description">
+                <h3>Crawling Claw</h3>
+                <p>AC 12
+HP 2 (1d4)
+Speed ​​4 squares, climbing - 4</p>
+                <hr>
+                <p>Immunity: Poison
+Condition Immunities: Poisoned
+Senses: Blindsight 6 cells (blind outside this radius)
+Passive Perception 10
+Language: Understands Common, but cannot speak it
+Difficulty 0 (0 - 10 XP)</p>
+                <hr>
+                <p>ClawMelee Weapon: +3 to attack, reach: one square, one target. Hit: 3 (1d4 + 1) slashing or bludgeoning damage (claw's choice).</p>
+            </div>
+            <img src="Изображения/рука_помощи-removebg-preview.png" alt="crawling">
+        </div>
+
+
+
+<div class="monster-block" data-size="small" data-type="undead">
+            <div class="monster-description">
+                <h3>Flameskull</h3>
+                <p>AC 13
+HP 40 (9d4 + 18)
+Speed ​​0 cells, fly 40</p>
+                <hr>
+                <p>Ability: Arcana +5, Perception +2
+Resistances: Lightning, Necrotic, Piercing
+Immunity: Cold, Fire, Poison
+Condition Immunities: Charmed, Frightened, Paralyzed, Poisoned
+Senses: Darkvision 12 cells
+Passive Perception 12
+Language: Common
+Difficulty 4 (1,100 XP)</p>
+                <hr>
+                <p>Illumination: The fire skull shines dimly for 3 squares, or brightly for 3 squares and dimly for an additional 3 squares. It can change its brightness as a standard action.
+Magic Resistance: The fire skull has advantage on saving throws against spells and other magical effects.
+Restoration: If the fire skull is destroyed, it fully regenerates after 1 hour unless it is splashed with holy water or a Dispel Magic or Remove Curse spell is cast.</p>
+            </div>
+            <img src="Изображения/черепокс-removebg-preview.png" alt="skullf">
+        </div>
+
+
+
+<div class="monster-block" data-size="small" data-type="undead">
+            <div class="monster-description">
+                <h3>Demilich</h3>
+                <p>AC 20 (natural armor)
+HP 80 (20d4)
+Speed ​​0, fly 30</p>
+                <hr>
+                <p>Resistances: Bludgeoning, Piercing, and Slashing from Magic Weapons
+Immunities: Necrotic, Poison, Psychic; Bludgeoning, Piercing, and Slashing from Non-Magic Weapons
+Condition Immunities: Charmed, Stunned, Exhausted, Frightened, Paralyzed, Petrified, Poisoned, Prone, Daze
+Senses: True Sight 24 squares
+Passive Perception 13
+Difficulty 18 (20,000 XP)</p>
+                <hr>
+                <p>Howl (Recharge 5-6): The demilich lets out a bloodcurdling howl. Each creature within 6 squares of the demilich that can hear the howl must succeed on a DC 15 Constitution saving throw or be reduced to 0 hit points. If successful, the creature is frightened until the end of its next turn.
+Life Drain: The demilich attacks up to 3 creatures it can see within 2 squares of it. Each target must succeed on a DC 19 Constitution saving throw. On a failed save, the creature takes 21 (6d6) necrotic damage, and the demilich regains hit points equal to the total damage dealt.
+Legendary Actions:
+Fly: The demilich flies up to half its flying speed.
+Dust Cloud: The demilich magically creates a dust storm from its remains. Each creature within 2 squares of the demilich, including those hiding around corners, must succeed on a DC 15 Constitution saving throw or be blinded until the end of the demilich's next turn. If the saving throw is successful, the creature is immune to Cloud until the end of the demilich's next turn.
+Drain Energy (Requires 2 Actions): Each creature within 6 squares of the demilich must make a DC 15 Constitution saving throw. On a failed save, the creature's hit point maximum is reduced by 10 (3d6). If a creature's hit point maximum is reduced to 0, the creature dies. The creature's hit point maximum can be restored with a Greater Restoration spell or similar magic.
+Vile Curse (Requires 3 Actions): The demilich attacks one creature it can see within 6 squares of it. The target must succeed on a DC 15 Wisdom saving throw or become magically cursed. While the curse is in effect, the target has disadvantage on attack rolls and saving throws. The target can repeat the saving throw at the end of each of its turns; if it succeeds, the curse ends.</p>
+            </div>
+            <img src="Изображения/потушили-removebg-preview.png" alt="demilich">
+        </div>
+
+
+
+<div class="monster-block" data-size="large" data-type="undead">
+            <div class="monster-description">
+                <h3>Avatar of Death</h3>
+                <p>A spectral humanoid skeleton dressed in tattered black robes and wielding a spectral scythe. It appears within 10 feet of you (in a location of the DM's choosing) and attacks you, warning everyone that you must win this battle alone. The death avatar fights until you are killed or it drops to 0 hit points, at which point it disappears. If anyone tries to help you, they will summon their own death avatar. A creature killed by the death avatar cannot be brought back to life.</p>
+                <hr>
+                <p>AC 20
+HP 0
+Speed ​​12, Flight 12 (hover)</p>
+                <hr>
+                <p>Immunities: Necrotic, Poison
+Condition Immunities: Charmed, Frightened, Paralyzed, Petrified, Poisoned, Unconscious
+Senses: Darkvision 12 squares, Truesight 12 squares
+Passive Perception 13
+Language: All languages ​​known to the summoner
+Difficulty 0 (0 - 10 XP)</p>
+                <hr>
+                <p>Scythe: The avatar swings the scythe at a creature adjacent to it, dealing 7 (1d8 + 3) slashing damage plus 4 (1d8) necrotic damage.</p>
+            </div>
+            <img src="Изображения/аватар_смерти-removebg-preview.png" alt="avatar of death">
+        </div>
+
+
+
+
+</div>
+
+
+    <script>
+        function filterMonsters() {
+            const sizeFilter = document.getElementById("size").value;
+            const typeFilter = document.getElementById("type").value;
+
+            const monsterBlocks = document.querySelectorAll(".monster-block");
+
+            monsterBlocks.forEach(block => {
+                const blockSize = block.getAttribute("data-size");
+                const blockType = block.getAttribute("data-type");
+
+                let showBlock = true;
+
+                if (sizeFilter !== "all" && sizeFilter !== blockSize) {
+                    showBlock = false;
+                }
+
+                if (typeFilter !== "all" && typeFilter !== blockType) {
+                    showBlock = false;
+                }
+
+                block.style.display = showBlock ? "block" : "none";
+            });
+        }
+    </script>
+
+    </main>
+
+    <footer>
+        <div class="footer">
+
+            <div class="row">
+  <div class="social-links">
+    <a href="https://t.me/comp_sy" target="_blank">
+      <img src="Изображения/icons8-telegram-app-200.png" alt="Telegram">
+    </a>
+    <a href="https://vk.com/petit_bouffon" target="_blank">
+      <img src="Изображения/icons8-vk-circled-200.png" alt="Vk">
+    </a>
+  </div>
+            </div>
+
+            <div class="row">
+                <ul>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Career</a></li>
+                </ul>
+            </div>
+
+            <div class="row">
+                TUTDILZHENBYT Copyright © 2024 All rights reserved || Designed By: Shvetsova Sofya IVT31b
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

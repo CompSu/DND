@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Game</title>
+    <style>
+        body {
+            font-family: 'Prestigio', sans-serif;
+            font-size: 45px;
+            background-color: #2e2e2e;
+            color: #f0e6d2;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            letter-spacing: 4px;
+            font-size: 45px;
+            font-family: 'House of the Dragon';
+            color: #D2C3AF;
+        }
+
+        label, input, button {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .input-filed {
+            font-family: 'Prestigio', sans-serif;
+            font-weight: bold;
+            font-size: 25px;
+            width: 100%;
+            padding: 10px 0;
+            margin: 5px 0;
+            border-left: 0;
+            border-top: 0;
+            border-right: 0;
+            color: #645C50;
+            text-align: center;
+            border-bottom: 1px solid #D2C3AF;
+            outline: none;
+            background: white;
+            border-radius: 30px;
+        }
+
+        button {
+            font-family: 'Prestigio', sans-serif;
+            font-size: 25px;
+            padding: 10px;
+            background: #645C50;
+            color: #D2C3AF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #373229;
+        }
+
+        #game-screen.hidden {
+            display: none;
+        }
+
+        #question-display {
+            font-size: 2.5rem;
+            color: #f0e6d2;
+            margin-bottom: 20px;
+        }
+
+        #timer-display {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+
+        body.darken {
+            background-color: #1e1e1e;
+            transition: background-color 0.5s ease;
+        }
+
+        input[type="number"] {
+            font-size: 2rem;
+            text-align: center;
+        }
+        .back-arrow {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            background-color: transparent;
+            border: none;
+            color: #f0e6d2;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .back-arrow:hover {
+            color: #D2C3AF;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-arrow" onclick="goBack()">&#8592; <!-- Символ стрелки Unicode --></button>
+    <div class="game-container">
+        <h1>Arithmetic Game</h1>
+
+        <label for="levels">Number of levels:</label>
+        <input type="number" id="levels" class="input-filed" value="5" min="1">
+
+        <button id="start-game" onclick="startGame()">Start Game</button>
+
+        <div id="game-screen" class="hidden">
+            <p id="question-display"></p>
+            <input type="number" id="answer-input" oninput="checkInput()">
+            <p id="timer-display">Time left: <span id="timer">0</span></p>
+        </div>
+
+        <div id="result-screen" class="hidden">
+            <p id="result-message"></p>
+            <button onclick="restartGame()">Restart</button>
+        </div>
+    </div>
+
+    <script>
+        let currentLevel = 0;
+        let totalLevels = 1;
+        let timeLeft = 30;
+        let timerInterval;
+        let correctAnswer = 0;
+
+        function startGame() {
+            totalLevels = parseInt(document.getElementById('levels').value);
+            currentLevel = 0;
+
+            document.getElementById('start-game').style.display = 'none';
+            document.getElementById('game-screen').classList.remove('hidden');
+            document.body.classList.add('darken');
+
+            nextQuestion();
+            startTimer();
+        }
+
+        function nextQuestion() {
+            if (currentLevel >= totalLevels) {
+                endGame(true);
+                return;
+            }
+
+            currentLevel++;
+            generateQuestion();
+            document.getElementById('answer-input').value = '';
+            document.getElementById('answer-input').focus();
+        }
+
+function generateQuestion() {
+    const operators = ['+', '-', '*', '/'];
+    let num1 = Math.floor(Math.random() * 100) + 1;
+    let num2 = Math.floor(Math.random() * 100) + 1;
+    const operator1 = operators[Math.floor(Math.random() * operators.length)];
+    const operator2 = operators[Math.floor(Math.random() * operators.length)];
+    let num3 = Math.floor(Math.random() * 100) + 1;
+
+    if (operator1 === '/') {
+        while (num2 === 0 || num1 % num2 !== 0) {
+            num1 = Math.floor(Math.random() * 100) + 1;
+            num2 = Math.floor(Math.random() * 100) + 1;
+        }
+    }
+    if (operator2 === '/') {
+        while (num3 === 0 || (eval(`${num1} ${operator1} ${num2}`) % num3 !== 0)) {
+            num3 = Math.floor(Math.random() * 100) + 1;
+        }
+    }
+
+    const expression = `(${num1} ${operator1} ${num2}) ${operator2} ${num3}`;
+    correctAnswer = Math.round(eval(expression) * 100) / 100;
+
+    document.getElementById('question-display').textContent = expression;
+}
+
+
+
+        function checkInput() {
+            const input = parseFloat(document.getElementById('answer-input').value);
+
+            if (input === correctAnswer) {
+                clearInterval(timerInterval);
+                nextQuestion();
+                startTimer();
+            }
+        }
+
+        function startTimer() {
+            timeLeft = 30;
+            document.getElementById('timer').textContent = timeLeft;
+            timerInterval = setInterval(function() {
+                timeLeft--;
+                document.getElementById('timer').textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    endGame(false);
+                }
+            }, 1000);
+        }
+
+        function endGame(won) {
+            document.getElementById('game-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+
+            if (won) {
+                document.getElementById('result-message').textContent = "You won! Great job!";
+            } else {
+                document.getElementById('result-message').textContent = "Time's up! Better luck next time!";
+            }
+        }
+
+        function restartGame() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>

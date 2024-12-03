@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DnD Helper Mini App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #6200ea;
+            color: white;
+        }
+        button:hover {
+            background-color: #3700b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>DnD Helper</h1>
+    <button id="roll-dice">Roll d20</button>
+    <button id="take-test">Take Race/Class Test</button>
+    <button id="go-to-site">Visit Website</button>
+
+    <script>
+        // Инициализация Telegram Mini App
+        if (window.Telegram.WebApp) {
+            Telegram.WebApp.ready();
+        }
+
+        // Функция для броска d20
+        document.getElementById("roll-dice").onclick = () => {
+            const roll = Math.floor(Math.random() * 20) + 1;
+            Telegram.WebApp.sendData(`You rolled a d20: ${roll}`);
+            alert(`You rolled: ${roll}`);
+        };
+
+        // Функция для перехода к тесту
+        document.getElementById("take-test").onclick = () => {
+            const race = prompt("Choose your race (e.g., Elf, Dwarf, Human):");
+            const charClass = prompt("Choose your class (e.g., Wizard, Fighter, Rogue):");
+            const result = `You are a ${race} ${charClass}!`;
+            Telegram.WebApp.sendData(result);
+            alert(result);
+        };
+
+        // Функция для перехода на сайт
+        document.getElementById("go-to-site").onclick = () => {
+            const siteUrl = "https://your-dnd-site.com"; // Замени на URL своего сайта
+            window.open(siteUrl, "_blank");
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DnD Calculator</title>
+    <style>
+        body {
+            font-family: 'Prestigio', sans-serif;
+            font-size: 45px;
+            background-color: #2e2e2e;
+            color: #f0e6d2;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        h1 {
+            letter-spacing: 4px;
+            font-size: 45px;
+            font-family: 'House of the Dragon';
+            color: #D2C3AF;
+        }
+
+        #calculator {
+            width: 300px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .button {
+            font-family: 'Prestigio', sans-serif;
+            font-size: 25px;
+            padding: 10px;
+            background: #645C50;
+            color: #D2C3AF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #373229;
+        }
+
+        #result {
+            grid-column: span 4;
+            font-size: 35px;
+            text-align: right;
+            padding: 10px;
+            background: #2e2e2e;
+            border: 1px solid #D2C3AF;
+            border-radius: 4px;
+            color: #f0e6d2;
+        }
+        .back-arrow {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            background-color: transparent;
+            border: none;
+            color: #f0e6d2;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .back-arrow:hover {
+            color: #D2C3AF;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-arrow" onclick="goBack()">&#8592;</button>
+    <h1>DnD Calculator</h1>
+    <div id="calculator">
+        <div id="result">|</div>
+        <button class="button" onclick="appendNumber(7)">7</button>
+        <button class="button" onclick="appendNumber(8)">8</button>
+        <button class="button" onclick="appendNumber(9)">9</button>
+        <button class="button" onclick="appendOperator('/')">/</button>
+        <button class="button" onclick="appendNumber(4)">4</button>
+        <button class="button" onclick="appendNumber(5)">5</button>
+        <button class="button" onclick="appendNumber(6)">6</button>
+        <button class="button" onclick="appendOperator('*')">*</button>
+        <button class="button" onclick="appendNumber(1)">1</button>
+        <button class="button" onclick="appendNumber(2)">2</button>
+        <button class="button" onclick="appendNumber(3)">3</button>
+        <button class="button" onclick="appendOperator('-')">-</button>
+        <button class="button" onclick="appendNumber(0)">0</button>
+        <button class="button" onclick="appendBracket('(')">(</button>
+        <button class="button" onclick="appendBracket(')')">)</button>
+        <button class="button" onclick="appendOperator('+')">+</button>
+        <button class="button" onclick="moveCursor(-1)">←</button>
+        <button class="button" onclick="moveCursor(1)">→</button>
+        <button class="button" onclick="deleteLast()">DEL</button>
+        <button class="button" onclick="calculateResult()">=</button>
+    </div>
+
+    <script>
+        let display = document.getElementById('result');
+        let currentInput = "|";
+        let cursorPosition = 0;
+    
+        function updateDisplay() {
+            display.innerText = currentInput;
+        }
+    
+        function appendNumber(number) {
+            currentInput = insertAtCursor(currentInput, number);
+            cursorPosition++;
+            updateDisplay();
+        }
+    
+        function appendOperator(operator) {
+            // Запрет на двойные операторы
+            if (
+                cursorPosition > 0 &&
+                "+-*/".includes(currentInput[cursorPosition - 1]) === false &&
+                currentInput[cursorPosition - 1] !== '(' &&
+                cursorPosition < currentInput.length &&
+                "+-*/".includes(currentInput[cursorPosition]) === false
+            ) {
+                currentInput = insertAtCursor(currentInput, operator);
+                cursorPosition++;
+                updateDisplay();
+            }
+        }
+    
+        function appendBracket(bracket) {
+            currentInput = insertAtCursor(currentInput, bracket);
+            cursorPosition++;
+            updateDisplay();
+        }
+    
+        function deleteLast() {
+            if (cursorPosition > 0) {
+                if (
+                    "+-*/".includes(currentInput[cursorPosition - 1]) &&
+                    cursorPosition > 1 &&
+                    "+-*/".includes(currentInput[cursorPosition - 2])
+                ) {
+                    // Удаляем оператор вместе с предшествующим
+                    currentInput =
+                        currentInput.slice(0, cursorPosition - 2) +
+                        currentInput.slice(cursorPosition);
+                    cursorPosition -= 2;
+                } else {
+                    currentInput =
+                        currentInput.slice(0, cursorPosition - 1) +
+                        currentInput.slice(cursorPosition);
+                    cursorPosition--;
+                }
+                updateDisplay();
+            }
+            if (currentInput.length === 0 || currentInput === "|") {
+                currentInput = "|";
+                cursorPosition = 0;
+                updateDisplay();
+            }
+        }
+    
+        function moveCursor(direction) {
+            cursorPosition = Math.max(0, Math.min(currentInput.length, cursorPosition + direction));
+            if (!currentInput.includes("|")) {
+                currentInput = currentInput.slice(0, cursorPosition) + "|" + currentInput.slice(cursorPosition);
+            } else {
+                currentInput = currentInput.replace("|", "");
+                currentInput = currentInput.slice(0, cursorPosition) + "|" + currentInput.slice(cursorPosition);
+            }
+            updateDisplay();
+        }
+    
+        function calculateResult() {
+            if (!areBracketsBalanced()) {
+                display.innerText = "Unbalanced Brackets";
+                return;
+            }
+            try {
+                let expression = currentInput.replace("|", "");
+                let result = eval(expression);
+                if (result === Infinity || isNaN(result)) {
+                    throw new Error();
+                }
+                display.innerText = result;
+                currentInput = result + "|";
+                cursorPosition = currentInput.length - 1;
+            } catch {
+                display.innerText = "Error";
+                currentInput = "|";
+                cursorPosition = 0;
+            }
+        }
+    
+        function areBracketsBalanced() {
+            let stack = [];
+            for (let char of currentInput.replace("|", "")) {
+                if (char === '(') {
+                    stack.push(char);
+                } else if (char === ')') {
+                    if (stack.length === 0) {
+                        return false;
+                    }
+                    stack.pop();
+                }
+            }
+            return stack.length === 0;
+        }
+    
+        function insertAtCursor(input, char) {
+            return input.slice(0, cursorPosition) + char + input.slice(cursorPosition);
+        }
+    
+        function goBack() {
+                window.history.back();
+            }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checking speed of casting spells</title>
+    <style>
+        body {
+            font-family: 'Prestigio', sans-serif;
+            font-size: 45px;
+            background-color: #2e2e2e;
+            color: #f0e6d2;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            letter-spacing: 4px;
+            font-size: 45px;
+            font-family: 'House of the Dragon';
+            color: #D2C3AF;
+        }
+
+        label, select, button {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .input-filed {
+            font-family: 'Prestigio', sans-serif;
+            font-weight: bold;
+            font-size: 25px;
+            width: 100%;
+            padding: 10px 0;
+            margin: 5px 0;
+            border-left: 0;
+            border-top: 0;
+            border-right: 0;
+            color: #645C50;
+            text-align: center;
+            border-bottom: 1px solid #D2C3AF;
+            outline: none;
+            background: white;
+            border-radius: 30px;
+        }
+
+        button {
+            font-family: 'Prestigio', sans-serif;
+            font-size: 25px;
+            padding: 10px;
+            background: #645C50;
+            color: #D2C3AF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #373229;
+        }
+
+        #game-screen.hidden {
+            display: none;
+        }
+
+        #word-display {
+            font-size: 2.5rem;
+            color: #f0e6d2;
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+        }
+
+        #word-display span {
+            transition: color 0.3s ease;
+        }
+
+        #timer-display {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+
+        body.darken {
+            background-color: #1e1e1e;
+            transition: background-color 0.5s ease;
+        }
+
+        input[type="text"] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .back-arrow {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            background-color: transparent;
+            border: none;
+            color: #f0e6d2;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .back-arrow:hover {
+            color: #D2C3AF;
+        }
+
+    </style>
+</head>
+<body>
+    <button class="back-arrow" onclick="goBack()">&#8592; <!-- Символ стрелки Unicode --></button>
+    <div class="game-container">
+        <h1>Checking speed of casting spells</h1>
+
+        <label for="levels">Number of levels:</label>
+        <input type="number" id="levels" class="input-filed" value="5" min="1">
+
+        <button id="start-game" onclick="startGame()">Start Game</button>
+
+        <div id="game-screen" class="hidden">
+            <p id="word-display"></p>
+            <input type="text" id="word-input" oninput="checkInput()">
+            <p id="timer-display">Time left: <span id="timer">0</span></p>
+        </div>
+
+        <div id="result-screen" class="hidden">
+            <p id="result-message"></p>
+            <button onclick="restartGame()">Restart</button>
+        </div>
+    </div>
+
+    <script>
+        const words = ["spell", "enchantment", "armor", "tiefling", "halfling", "mimic", "dungeon", "sword", 
+                       "dragonborn", "gnome", "rogue", "cleric", "barbarian", "mindflayer", "skeleton", 
+                       "undead", "gold", "artifact", "grimoire", "wizard", "fireball", "beholder", "slime cube", "fiend", "potion", "legion", "spider", "wand", 
+                       "archer", "orc", "goblin", "gnole", "tavern", "bugbear", "coin", 
+                       "elf", "healing", "leach", "vampire", "treasure"];
+
+        let usedWords = [];
+        let currentWord = "";
+        let currentLevel = 0;
+        let totalLevels = 1;
+        let timeLeft = 10;
+        let timerInterval;
+
+        function startGame() {
+            totalLevels = Math.min(parseInt(document.getElementById('levels').value), words.length);
+            currentLevel = 0;
+            usedWords = [];
+
+            document.getElementById('start-game').style.display = 'none';
+            document.getElementById('game-screen').classList.remove('hidden');
+            document.body.classList.add('darken');
+
+            nextWord();
+            startTimer();
+        }
+
+        function nextWord() {
+            if (currentLevel >= totalLevels) {
+                endGame(true);
+                return;
+            }
+
+            currentLevel++;
+            let randomIndex;
+
+            do {
+                randomIndex = Math.floor(Math.random() * words.length);
+            } while (usedWords.includes(randomIndex));
+
+            usedWords.push(randomIndex);
+            currentWord = words[randomIndex];
+
+            displayWord();
+            document.getElementById('word-input').value = '';
+            document.getElementById('word-input').focus();
+        }
+
+        function displayWord() {
+            let display = '';
+            for (let i = 0; i < currentWord.length; i++) {
+                display += `<span id="letter-${i}">${currentWord[i]}</span>`;
+            }
+            document.getElementById('word-display').innerHTML = display;
+        }
+
+        function checkInput() {
+            const input = document.getElementById('word-input').value;
+            for (let i = 0; i < currentWord.length; i++) {
+                const letterElement = document.getElementById(`letter-${i}`);
+                if (input[i] === currentWord[i]) {
+                    letterElement.style.color = 'white';
+                } else if (input[i]) {
+                    letterElement.style.color = 'red';
+                } else {
+                    letterElement.style.color = '';
+                }
+            }
+
+            if (input === currentWord) {
+                clearInterval(timerInterval);
+                nextWord();
+                startTimer();
+            }
+        }
+
+        function startTimer() {
+            timeLeft = 10;
+            document.getElementById('timer').textContent = timeLeft;
+            timerInterval = setInterval(function() {
+                timeLeft--;
+                document.getElementById('timer').textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    endGame(false);
+                }
+            }, 1000);
+        }
+
+        function endGame(won) {
+            document.getElementById('game-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+
+            if (won) {
+                document.getElementById('result-message').textContent = "Congrats! You can cast spells very well!";
+            } else {
+                document.getElementById('result-message').textContent = "Too slow! Read your wizard's book again!";
+            }
+        }
+
+        function restartGame() {
+            location.reload();
+        }
+    </script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

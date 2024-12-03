@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeons & Dragons</title>
+    <link rel="icon" href="Изображения/7b9ae0b4b45c032ac8964d9b61387fb8.png">
+    <link rel="stylesheet" href="Стиль.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Dungeons & Dragons</h1>
+            <nav>
+                <ul>
+                    <li><a href="../DND.html">Home</a></li>
+                    <li><a href="races.html">Races</a></li>
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="bestiary.html">Bestiary</a></li>
+                    <li><a href="regist.html">Registration</a></li>
+                    <li><a href="JavaEx.html">JavaLab</a></li>
+                    <li><a href="MiniGames.html">Games</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<main>
+  <div class="home-block">
+    <h2>Hello...</h2>
+    <label>Surname: <input type="text" class="input-filed" id="lastName"></label><br>
+    <label>Name: <input type="text" class="input-filed" id="firstName"></label><br>
+    <label>Patronymic: <input type="text" class="input-filed" id="middleName"></label><br>
+    <label>Age: <input type="number" class="input-filed" id="age"></label><br>
+    <button onclick="greetUser()">Greet me</button>
+    <div id="greetingResult" class="home-block"></div>
+
+    <script>
+      function greetUser() {
+        const lastName = document.getElementById("lastName").value;
+        const firstName = document.getElementById("firstName").value;
+        const middleName = document.getElementById("middleName").value;
+        const age = parseInt(document.getElementById("age").value);
+        const resultDiv = document.getElementById("greetingResult");
+
+        if (age < 7) {
+          resultDiv.innerText = `Hi, ${firstName}`;
+        } else if (age >= 7 && age <= 18) {
+          resultDiv.innerText = `Hello, ${lastName}`;
+        } else {
+          resultDiv.innerText = `Good afternoon, ${firstName} ${middleName}`;
+        }
+      }
+    </script>
+  </div>
+
+  <div class="home-block">
+    <h2>Dividing numbers</h2>
+    <label>Dividend: <input type="number" class="input-filed" id="dividend"></label><br>
+    <label>Divider: <input type="number" class="input-filed" id="divisor"></label><br>
+    <button onclick="divideNumbers()">Divide</button>
+    <div id="divisionResult" class="home-block"></div>
+
+    <script>
+      function divideNumbers() {
+        const dividend = parseFloat(document.getElementById("dividend").value);
+        const divisor = parseFloat(document.getElementById("divisor").value);
+        const resultDiv = document.getElementById("divisionResult");
+
+        if (divisor !== 0) {
+          const quotient = Math.floor(dividend / divisor);
+          const remainder = dividend % divisor;
+          resultDiv.innerText = `Result: ${quotient}, remainder: ${remainder}`;
+        } else {
+          resultDiv.innerText = "Divider can not be zero!";
+        }
+      }
+    </script>
+  </div>
+
+  <div class="home-block">
+    <h2>Day of week</h2>
+    <label>Number from 1 to 7: <input type="number" class="input-filed" id="dayNumber"></label><br>
+    <button onclick="getDayOfWeek()">Find out</button>
+    <div id="dayResult" class="home-block"></div>
+
+    <script>
+      function getDayOfWeek() {
+        const dayNumber = parseInt(document.getElementById("dayNumber").value);
+        const days = ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        const resultDiv = document.getElementById("dayResult");
+
+        if (dayNumber >= 1 && dayNumber <= 7) {
+          resultDiv.innerText = `It's ${days[dayNumber]}`;
+        } else {
+          resultDiv.innerText = "Invalid number (1-7)!";
+        }
+      }
+    </script>
+  </div>
+
+  <div class="home-block">
+    <h2>Carriage calculation</h2>
+    <label>Number of orders: <input type="number" class="input-filed" id="orders"></label><br>
+    <label>Carriage length: (meters): <input type="number" class="input-filed" id="wagonLength"></label><br>
+    <label>Carriage width: (meters): <input type="number" class="input-filed" id="wagonWidth"></label><br>
+    <label>Carriage height: (meters): <input type="number" class="input-filed" id="wagonHeight"></label><br>
+    <button onclick="calculateWagons()">Calculate</button>
+    <div id="wagonResult" class="home-block"></div>
+
+    <script>
+      function calculateWagons() {
+        const orders = parseInt(document.getElementById("orders").value);
+        const wagonLength = parseFloat(document.getElementById("wagonLength").value) * 100;
+        const wagonWidth = parseFloat(document.getElementById("wagonWidth").value) * 100;
+        const wagonHeight = parseFloat(document.getElementById("wagonHeight").value) * 100;
+        const resultDiv = document.getElementById("wagonResult");
+
+        const boxLength = 0.3 + 0.05;
+        const boxWidth = 0.5 + 0.05;
+        const boxHeight = 0.4 + 0.05;
+
+        const boxesPerWagon = Math.floor(wagonLength / boxLength) * Math.floor(wagonWidth / boxWidth) * Math.floor(wagonHeight / boxHeight);
+        const wagonsNeeded = Math.ceil(orders / boxesPerWagon);
+
+        resultDiv.innerText = `Carriages will be needed: ${wagonsNeeded}`;
+      }
+    </script>
+  </div>
+
+  <div class="home-block">
+    <h2>Discover the Magical Fridge</h2>
+    <div class="java-block">
+      <img src="Изображения/DALL·E 2024-11-11 15.17.24 - A refrigerator designed in the style of Dungeons and Dragons, with intricate medieval engravings and fantasy elements. The refrigerator has a sturdy, .webp" alt="Freezer">
+      <h3>Arcane Enchanted</h3>
+    </div>
+
+    <button onclick="toggleFridge(this)">Reveal the Mystical Properties</button>
+
+    <p id="fridgeDetails"></p>
+
+    <script>
+      var isFridgeVisible = false;
+
+      function toggleFridge(button) {
+        var fridgeDetails = document.getElementById("fridgeDetails");
+
+        if (isFridgeVisible) {
+          fridgeDetails.innerHTML = "";
+          isFridgeVisible = false;
+          button.innerHTML = "Reveal the Mystical Properties";
+        } else {
+          var magicalFridge = {
+            color: "Shimmering Silver",
+            brand: "Arcane Icekeeper",
+            model: "RT-45 Enchanted",
+            price: "Priceless (only obtainable by a wizard's spell)"
+          };
+
+          fridgeDetails.innerHTML =
+            "<strong>Brand:</strong> " + magicalFridge.brand + "<br>" +
+            "<strong>Model:</strong> " + magicalFridge.model + "<br>" +
+            "<strong>Color:</strong> " + magicalFridge.color + "<br>" +
+            "<strong>Price:</strong> " + magicalFridge.price + "<br><br>" +
+            "This fridge is said to never let any food spoil, keeping it in stasis for an eternity. Rumor has it, it also grants +2 to Constitution when food is consumed from it.";
+
+          isFridgeVisible = true;
+          button.innerHTML = "Hide the Mystical Properties";
+        }
+      }
+    </script>
+  </div>
+
+  <div class="home-block">
+    <h2>Character Info</h2>
+    <form id="character-form">
+      <label for="name">Name:</label>
+      <input type="text" class="input-filed" id="name" required>
+      
+      <label for="level">Level:</label>
+      <input type="number" class="input-filed" id="level" required>
+      
+      <label for="class">Class:</label>
+      <input type="text" class="input-filed" id="class" required>
+      
+      <button type="button" onclick="addCharacter()">Add Character</button>
+    </form>
+  </div>
+  
+  <div class="home-block">
+    <h2>Character Table</h2>
+    <div id="character-table-container"></div>
+  </div>
+  
+  <div class="home-block">
+    <h2>Array Multiplication</h2>
+    <form id="multiply-form">
+      <label for="numbers">Enter numbers (comma-separated):</label>
+      <input type="text" class="input-filed" id="numbers" required>
+      <button type="button" onclick="calculateProduct()">Calculate Product</button>
+    </form>
+    <div id="multiply-result"></div>
+  </div>
+  
+  <div class="home-block">
+    <h2>Cumulative Sum Array</h2>
+    <form id="sum-form">
+      <label for="sum-numbers">Enter numbers (comma-separated):</label>
+      <input type="text" class="input-filed" id="sum-numbers" required>
+      <button type="button" onclick="calculateCumulativeSum()">Calculate Cumulative Sum</button>
+    </form>
+    <div id="sum-result"></div>
+  </div>
+
+  <div class="home-block">
+    <h2>Generate Range</h2>
+<div>
+  <label for="rangeStart">Start:</label>
+  <input type="number" class="input-filed" id="rangeStart" placeholder="Enter start of range">
+  <label for="rangeEnd">End:</label>
+  <input type="number" class="input-filed" id="rangeEnd" placeholder="Enter end of range">
+  <label for="rangeStep">Step:</label>
+  <input type="number" class="input-filed" id="rangeStep" placeholder="Enter step (optional)">
+  <button onclick="generateRange()">Generate</button>
+</div>
+
+<h3>Generated Range:</h3>
+<div id="rangeResult"></div>
+
+  </div>
+
+  <div class="home-block">
+    <input type="text" class="input-filed" id="textInput" placeholder="Enter text here" />
+    <button onclick="fillText()">Fill Text</button>
+
+    <button onclick="checkText()">Check Text</button>
+
+    <button onclick="toggleLock()">Lock</button>
+
+    <button onclick="toggleVisibility()">Hidden</button>
+
+    <button onclick="toggleField()">Hide Field</button>
+  </div>
+  
+  <div class="home-block">
+    <div id="colorBox" style="width:200px; height:200px; background-color:rgb(148, 55, 55);"></div>
+  </div>
+
+  <div class="home-block">
+    <div class="colorShape" style="width:100px; height:100px; background-color:rgb(148, 55, 55); display:inline-block;"></div>
+    <div class="colorShape" style="width:100px; height:100px; background-color:rgb(148, 55, 55); display:inline-block;"></div>
+    <div class="colorShape" style="width:100px; height:100px; background-color:rgb(148, 55, 55); display:inline-block;"></div>
+    <div class="colorShape" style="width:100px; height:100px; background-color:rgb(148, 55, 55); display:inline-block;"></div>
+    <div class="colorShape" style="width:100px; height:100px; background-color:rgb(148, 55, 55); display:inline-block;"></div>
+    <div class="colorShape" style="width:100px; height:100px; background-color:rgb(148, 55, 55); display:inline-block;"></div>
+    <div class="colorShape" style="width:100px; height:100px; background-color:rgb(148, 55, 55); display:inline-block;"></div>
+    <div class="colorShape" style="width:100px; height:100px; background-color:rgb(148, 55, 55); display:inline-block;"></div>        
+  </div>
+
+  <div class="home-block"> 
+    <input type="text" class="input-filed" id="autocompleteInput" oninput="showSuggestions()" placeholder="Type a spell or character..." />
+    <div id="suggestions"></div>
+  </div>
+
+  <div class="home-block">
+    <div id="mouseTrailBox" style="width: 300px; height: 300px; border: 2px solid rgb(80, 66, 60); position: relative; overflow: hidden;">
+    </div>
+  </div>
+
+  <div class="home-block">
+    <div id="dragBox" style="width: 300px; height: 300px; border: 2px solid rgb(80, 66, 60); position: relative;">
+      <div id="draggable" style="width: 100px; height: 100px; text-align: center;color: #000000; background-color: rgb(78, 113, 87); position: absolute;">Move Me!</div>
+    </div>
+  </div>
+  
+  <script>
+    const characters = [];
+    
+    function addCharacter() {
+      const name = document.getElementById('name').value;
+      const level = document.getElementById('level').value;
+      const className = document.getElementById('class').value;
+      
+      if (name && level && className) {
+        characters.push({ name, level, class: className });
+        document.getElementById('name').value = '';
+        document.getElementById('level').value = '';
+        document.getElementById('class').value = '';
+        updateCharacterTable();
+      } else {
+        alert('Please fill in all fields.');
+      }
+    }
+  
+    function updateCharacterTable() {
+      const tableContainer = document.getElementById('character-table-container');
+      tableContainer.innerHTML = buildCharacterTable(characters);
+    }
+  
+    function buildCharacterTable(data) {
+      if (data.length === 0) return '<p>No characters added yet.</p>';
+      
+      const headers = Object.keys(data[0]);
+      const headerRow = `<tr>${headers.map(header => `<th>${header}</th>`).join('')}</tr>`;
+      const rows = data.map(character =>
+        `<tr>${headers.map(header => `<td>${character[header]}</td>`).join('')}</tr>`
+      ).join('');
+      
+      return `<table>${headerRow}${rows}</table>`;
+    }
+  
+    function calculateProduct() {
+      const input = document.getElementById('numbers').value;
+      const numbers = input.split(',').map(num => parseFloat(num.trim())).filter(num => !isNaN(num));
+      
+      if (numbers.length > 0) {
+        const product = multiplyArray(numbers);
+        document.getElementById('multiply-result').innerHTML = `<p>Product: ${product}</p>`;
+      } else {
+        alert('Please enter valid numbers.');
+      }
+    }
+  
+    const multiplyArray = arr => arr.reduce((acc, num) => acc * num, 1);
+  
+    function calculateCumulativeSum() {
+      const input = document.getElementById('sum-numbers').value;
+      const numbers = input.split(',').map(num => parseFloat(num.trim())).filter(num => !isNaN(num));
+      
+      if (numbers.length > 0) {
+        const cumulativeSumResult = cumulativeSum(numbers);
+        document.getElementById('sum-result').innerHTML = `<p>Cumulative Sum: ${cumulativeSumResult.join(', ')}</p>`;
+      } else {
+        alert('Please enter valid numbers.');
+      }
+    }
+  
+    function cumulativeSum(arr) {
+      const result = [];
+      arr.reduce((sum, num) => {
+        sum += num;
+        result.push(sum);
+        return sum;
+      }, 0);
+      return result;
+    }
+    
+    updateCharacterTable();
+    function range(start, end, step = 1) {
+  const result = [];
+  if (step > 0) {
+    for (let i = start; i <= end; i += step) {
+      result.push(i);
+    }
+  } else {
+    for (let i = start; i >= end; i += step) {
+      result.push(i);
+    }
+  }
+  return result;
+}
+
+function range(start, end, step = 1) {
+  const result = [];
+
+  if (step === 0 || isNaN(step)) {
+    step = 1;
+  }
+
+  if (step > 0 && start > end) {
+    step = -step;
+  } else if (step < 0 && start < end) {
+    step = Math.abs(step);
+  }
+
+  if (step > 0) {
+    for (let i = start; i <= end; i += step) {
+      result.push(i);
+    }
+  } else {
+    for (let i = start; i >= end; i += step) {
+      result.push(i);
+    }
+  }
+
+  return result;
+}
+
+function generateRange() {
+  const start = parseInt(document.getElementById('rangeStart').value);
+  const end = parseInt(document.getElementById('rangeEnd').value);
+  let step = parseInt(document.getElementById('rangeStep').value);
+
+  if (isNaN(step) || step === 0) {
+    step = 1;
+  }
+
+  if (!isNaN(start) && !isNaN(end)) {
+    const rangeArray = range(start, end, step);
+    document.getElementById('rangeResult').innerText = `Range: [${rangeArray.join(', ')}]`;
+  } else {
+    alert('Please enter valid start and end values.');
+  }
+}
+
+function fillText() {
+      document.getElementById("textInput").value = "An enchanted message appears!";
+    }
+
+function checkText() {
+    const textInput = document.getElementById("textInput").value;
+    if (textInput) {
+      alert(`You entered: "${textInput}"`);
+    } else {
+      alert("You entered nothing.");
+    }
+  }
+
+  let isLocked = false;
+  
+  function toggleLock() {
+    const textInput = document.getElementById("textInput");
+    const button = document.querySelector("button[onclick='toggleLock()']");
+    isLocked = !isLocked;
+    textInput.disabled = isLocked;
+    button.textContent = isLocked ? "Unlock" : "Lock";
+  }
+
+  let isHidden = true;
+  
+  function toggleVisibility() {
+    const textInput = document.getElementById("textInput");
+    const button = document.querySelector("button[onclick='toggleVisibility()']");
+    isHidden = !isHidden;
+    textInput.type = isHidden ? "password" : "text";
+    button.textContent = isHidden ? "Visible" : "Hidden";
+  }
+
+  let isFieldVisible = true;
+
+function toggleField() {
+  const textInput = document.getElementById("textInput");
+  const button = document.querySelector("button[onclick='toggleField()']");
+  isFieldVisible = !isFieldVisible;
+  textInput.style.display = isFieldVisible ? "inline-block" : "none";
+  button.textContent = isFieldVisible ? "Hide Field" : "Show Field";
+}
+
+const colorBox = document.getElementById("colorBox");
+  
+  colorBox.addEventListener("mouseover", () => colorBox.style.backgroundColor = "rgb(55, 148, 88)");
+  colorBox.addEventListener("mouseout", () => colorBox.style.backgroundColor = "rgb(148, 55, 55)");
+
+
+  const shapes = document.querySelectorAll(".colorShape");
+
+  shapes.forEach(shape => {
+    shape.addEventListener("click", () => {
+      shapes.forEach(s => s.style.backgroundColor = "rgb(148, 55, 55)");
+      shape.style.backgroundColor = "rgb(55, 148, 88)";
+    });
+  });
+
+  const options = ["Arcane", "Alchemy", "Abyss", "Amulet", "Ancestral", "Archer", "Assassin", "Aura", "Artifact", "Astral", "Blade", "Beholder", "Banish", "Brigand", "Battle", "Basilisk", "Broadsword", "Blessing", "Beast", "Bard", "Cleric", "Crypt", "Curse", "Coven", "Chimera", "Conjure", "Cloak", "Chaos", "Crystal", "Castle", "Dragon", "Druid", "Dungeon", "Divine", "Dagger", "Darkness", "Direwolf", "Demon", "Destiny", "Deity", "Elemental", "Enchantment", "Elf", "Eldritch", "Ethereal", "Eagle", "Evil", "Elder", "Energy", "Essence", "Fae", "Fireball", "Frost", "Familiar", "Fiend", "Forest", "Fortress", "Fury", "Fate", "Falchion", "Guild", "Gargoyle", "Griffon", "Gnome", "Golem", "Goblin", "Ghoul", "Gladiator", "Glade", "Grimoire", "Hero", "Hex", "Hydra", "Hallow", "Hellhound", "Horizon", "Harpy", "Haven", "Hearth", "Hilt", "Illusion", "Imp", "Infernal", "Invocation", "Invisibility", "Incantation", "Ivory", "Ice", "Iron", "Instinct", "Jewel", "Javelin", "Justice", "Jagged", "Jester", "Jungle", "Journey", "Jinx", "Judgement", "Juggler", "Knight", "Keen", "Key", "Kraken", "King", "Kin", "Keep", "Kindred", "Kobold", "Knowledge", "Lore", "Lich", "Lycanthrope", "Labyrinth", "Lance", "Lair", "Legend", "Longbow", "Lunar", "Locket", "Magic", "Mystic", "Mana", "Monastery", "Mage", "Mortal", "Myth", "Minotaur", "Mystery", "Mantle", "Necromancer", "Nightmare", "Nymph", "Nexus", "Nimbus", "Noble", "Nether", "Naga", "Nemesis", "Nature", "Oracle", "Oath", "Ogre", "Oblivion", "Orb", "Orc", "Obelisk", "Occult", "Omen", "Outcast", "Paladin", "Potion", "Portal", "Phantom", "Pact", "Priest", "Phoenix", "Pyramid", "Protector", "Prowess", "Quiver", "Quest", "Quartz", "Quench", "Quagmire", "Queen", "Quickening", "Quiet", "Quintessence", "Quill", "Ranger", "Runes", "Ritual", "Realm", "Relic", "Raven", "Revenant", "Reaper", "Radiance", "Rogue", "Sorcery", "Specter", "Sanctuary", "Scepter", "Shadow", "Sword", "Shaman", "Sapphire", "Shield", "Scroll", "Treasure", "Tome", "Throne", "Tavern", "Thunder", "Titan", "Temple", "Trap", "Totem", "Transmutation", "Undead", "Unicorn", "Unholy", "Uprising", "Urn", "Unity", "Unbound", "Underworld", "Utopia", "Umbra", "Vampire", "Valor", "Vortex", "Visage", "Veil", "Venom", "Virtue", "Vision", "Valkyrie", "Victory", "Warlock", "Wizard", "Wraith", "Werewolf", "Whisper", "Warden", "Wand", "Wilderness", "Wisdom", "Wrath", "Xanadu", "Xylomancer", "Xenolith", "Xerophyte", "Xenial", "Xerxes", "Xebec", "Xeroc", "Xenograft", "Xoanon", "Yeti", "Yield", "Yarn", "Yearning", "Yoke", "Yawp", "Yew", "Yore", "Yggdrasil", "Youth", "Zephyr", "Ziggurat", "Zombie", "Zealot", "Zodiac", "Ziggurath", "Zircon", "Zirconium", "Zone", "Zither"];
+  
+  function showSuggestions() {
+    const input = document.getElementById("autocompleteInput").value.toLowerCase();
+    const suggestions = document.getElementById("suggestions");
+    suggestions.innerHTML = "";
+
+    
+    if (input) {
+      options
+        .filter(option => option.toLowerCase().startsWith(input))
+        .forEach(option => {
+          const suggestionItem = document.createElement("div");
+          suggestionItem.textContent = option;
+          suggestionItem.onclick = () => document.getElementById("autocompleteInput").value = option;
+          suggestions.appendChild(suggestionItem);
+        });
+    }
+  }
+
+  const mouseTrailBox = document.getElementById("mouseTrailBox");
+
+  mouseTrailBox.addEventListener("mousemove", (event) => {
+    const trail = document.createElement("div");
+    trail.style.position = "absolute";
+    trail.style.width = "10px";
+    trail.style.height = "10px";
+    trail.style.backgroundColor = "rgb(78, 113, 87)";
+    trail.style.borderRadius = "50%";
+
+    const boxRect = mouseTrailBox.getBoundingClientRect();
+    trail.style.left = `${event.clientX - boxRect.left}px`;
+    trail.style.top = `${event.clientY - boxRect.top}px`;
+
+    mouseTrailBox.appendChild(trail);
+    setTimeout(() => trail.remove(), 500);
+  });
+
+  const dragBox = document.getElementById("dragBox");
+  const draggable = document.getElementById("draggable");
+  let isDragging = false;
+  let offsetX, offsetY;
+
+  draggable.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    offsetX = e.clientX - draggable.getBoundingClientRect().left;
+    offsetY = e.clientY - draggable.getBoundingClientRect().top;
+    draggable.style.cursor = "grabbing";
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (isDragging) {
+      const boxRect = dragBox.getBoundingClientRect();
+
+      let newX = e.clientX - boxRect.left - offsetX;
+      let newY = e.clientY - boxRect.top - offsetY;
+
+      newX = Math.max(0, Math.min(newX, boxRect.width - draggable.offsetWidth));
+      newY = Math.max(0, Math.min(newY, boxRect.height - draggable.offsetHeight));
+
+      draggable.style.left = `${newX}px`;
+      draggable.style.top = `${newY}px`;
+    }
+  });
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+    draggable.style.cursor = "grab";
+  });
+
+  </script>
+  
+  </div>  
+</main>
+
+
+
+    <footer>
+        <div class="footer">
+            <div class="row">
+                <div class="social-links">
+                    <a href="https://t.me/comp_sy" target="_blank">
+                        <img src="Изображения/icons8-telegram-app-200.png" alt="Telegram">
+                    </a>
+                    <a href="https://vk.com/petit_bouffon" target="_blank">
+                        <img src="Изображения/icons8-vk-circled-200.png" alt="Vk">
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <ul>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Career</a></li>
+                </ul>
+            </div>
+
+            <div class="row">
+                TUTDILZHENBYT Copyright © 2024 All rights reserved || Designed By: Shvetsova Sofya IVT31b
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

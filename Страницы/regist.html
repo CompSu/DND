@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeons & Dragons</title>
+    <link rel="icon" href="Изображения/7b9ae0b4b45c032ac8964d9b61387fb8.png">
+    <link rel="stylesheet" href="Стиль.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Dungeons & Dragons</h1>
+            <nav>
+                <ul>
+                    <li><a href="../DND.html">Home</a></li>
+                    <li><a href="races.html">Races</a></li>
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="bestiary.html">Bestiary</a></li>
+                    <li><a href="regist.html">Registration</a></li>
+                    <li><a href="JavaEx.html">JavaLab</a></li>
+                    <li><a href="MiniGames.html">Games</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+  <div class="container">
+    <div class="tabs">
+      <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+      <button type="button" class="toggle-btn" onclick="registration()">Register</button>
+    </div>
+
+    <form id="login" class="form">
+      <input type="text" class="input-filed" placeholder="User Id required">
+      <input type="text" class="input-filed" placeholder="Password">
+      <input type="checkbox" class="check-box"><span>Remember Password</span>
+      <button type="submit" class="submit-btn">Log in</button>
+    </form>
+
+    <form id="register" class="form">
+      <input type="text" class="input-filed" placeholder="User Id">
+      <input type="email" class="input-filed" placeholder="Email Id">
+      <input type="text" class="input-filed" placeholder="Password">
+      <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
+      <button type="submit" class="submit-btn">Register</button>
+    </form>
+  </div>
+
+  <script>
+    var logIn = document.getElementById("login");
+    var register = document.getElementById("register");
+    var button = document.getElementById("btn");
+
+    function registration() {
+      logIn.style.left = "-400px";
+      register.style.left = "50px";
+      button.style.left = "110px";
+    }
+
+    function login() {
+      logIn.style.left = "50px";
+      register.style.left = "450px";
+      button.style.left = "0";
+    }
+  </script>
+    <footer>
+        <div class="footer">
+
+            <div class="row">
+  <div class="social-links">
+    <a href="https://t.me/comp_sy" target="_blank">
+      <img src="Изображения/icons8-telegram-app-200.png" alt="Telegram">
+    </a>
+    <a href="https://vk.com/petit_bouffon" target="_blank">
+      <img src="Изображения/icons8-vk-circled-200.png" alt="Vk">
+    </a>
+  </div>
+            </div>
+
+            <div class="row">
+                <ul>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Career</a></li>
+                </ul>
+            </div>
+
+            <div class="row">
+                TUTDILZHENBYT Copyright © 2024 All rights reserved || Designed By: Shvetsova Sofya IVT31b
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
